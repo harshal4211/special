@@ -1,0 +1,1104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: "Cormorant Garamond", serif;
+    color: #754d58;
+    background: #fff4f7;
+}
+
+#app {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #ffffff 0%,
+            #fff4f6 45%,
+            #f7dfe6 100%
+        );
+}
+
+
+/* =========================
+   PARTICLES
+========================= */
+
+#particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 900;
+}
+
+.particle {
+    position: absolute;
+    top: -30px;
+    pointer-events: none;
+
+    animation:
+        particleFall linear forwards;
+}
+
+
+/* =========================
+   SCREEN
+========================= */
+
+.screen {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 20px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(1.05);
+
+    transition:
+        opacity .8s ease,
+        transform 1s ease,
+        visibility .8s ease;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.scene {
+    width: min(900px, 94vw);
+}
+
+.intro-card,
+.scene,
+.photo-wrapper,
+.quote-wrapper,
+.final-wrapper {
+    position: relative;
+    z-index: 10;
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.tiny-text {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #b67786;
+    margin-bottom: 18px;
+}
+
+.soft-text {
+    max-width: 650px;
+    margin: 20px auto 0;
+
+    font-size: 19px;
+    line-height: 1.5;
+
+    color: #896b73;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro-heart {
+    font-size: 80px;
+
+    animation:
+        heartbeat 1.8s infinite;
+
+    filter:
+        drop-shadow(
+            0 0 30px
+            rgba(225, 100, 135, .45)
+        );
+}
+
+.intro-card h1 {
+    margin-top: 15px;
+
+    font-family: "Great Vibes", cursive;
+
+    font-size:
+        clamp(65px, 15vw, 125px);
+
+    font-weight: 400;
+
+    color: #a15f70;
+}
+
+.intro-card p {
+    font-size: 20px;
+    color: #96747c;
+}
+
+#startBtn {
+    margin-top: 30px;
+
+    padding: 14px 32px;
+
+    border: 1px solid #dcaeb9;
+    border-radius: 50px;
+
+    background:
+        rgba(255,255,255,.8);
+
+    color: #9e6070;
+
+    font-family: inherit;
+    font-size: 17px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px
+        rgba(170,80,105,.12);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+#startBtn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 40px
+        rgba(170,80,105,.2);
+}
+
+
+/* =========================
+   SCRIPT TITLE
+========================= */
+
+.script-title {
+    font-family: "Great Vibes", cursive;
+
+    font-size:
+        clamp(48px, 9vw, 90px);
+
+    font-weight: 400;
+
+    line-height: .95;
+
+    color: #9f6272;
+}
+
+.script-title span {
+    display: block;
+    color: #d37e92;
+}
+
+.small-script {
+    font-size:
+        clamp(42px, 7vw, 70px);
+}
+
+
+/* =========================
+   HEART
+========================= */
+
+.main-heart {
+    margin: 25px auto;
+
+    font-size:
+        clamp(90px, 18vw, 150px);
+
+    animation:
+        heartbeat 1.7s infinite;
+
+    filter:
+        drop-shadow(
+            0 10px 30px
+            rgba(210,90,120,.35)
+        );
+}
+
+
+/* =========================
+   ARROW AREA
+========================= */
+
+.arrow-area {
+    position: relative;
+
+    width: min(900px, 96vw);
+    height: 270px;
+
+    margin: 20px auto;
+
+    overflow: hidden;
+
+    touch-action: none;
+}
+
+
+/* =========================
+   TARGET HEART
+========================= */
+
+#targetHeart {
+    position: absolute;
+
+    right: 8%;
+    top: 50%;
+
+    width: 125px;
+    height: 125px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 78px;
+
+    transform:
+        translateY(-50%);
+
+    z-index: 10;
+
+    animation:
+        targetBeat 1.5s infinite;
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            rgba(220,100,135,.5)
+        );
+}
+
+.target-glow {
+    position: absolute;
+
+    right: calc(8% + 10px);
+    top: 50%;
+
+    width: 105px;
+    height: 105px;
+
+    transform:
+        translateY(-50%);
+
+    border-radius: 50%;
+
+    background:
+        rgba(235,130,155,.18);
+
+    filter: blur(25px);
+}
+
+
+/* =========================
+   BOW
+========================= */
+
+.bow {
+    position: absolute;
+
+    left: 5%;
+    top: 50%;
+
+    width: 65px;
+    height: 120px;
+
+    transform:
+        translateY(-50%);
+
+    z-index: 4;
+}
+
+.bow-top,
+.bow-bottom {
+    position: absolute;
+
+    left: 0;
+
+    width: 65px;
+    height: 60px;
+
+    border-right:
+        5px solid #75545d;
+
+    border-radius: 50%;
+}
+
+.bow-top {
+    top: 0;
+    transform: rotate(-8deg);
+}
+
+.bow-bottom {
+    bottom: 0;
+    transform: rotate(8deg);
+}
+
+
+/* =========================
+   STRING
+========================= */
+
+#bowString {
+    position: absolute;
+
+    left: calc(5% + 57px);
+    top: 50%;
+
+    width: 2px;
+    height: 120px;
+
+    background: #76565f;
+
+    transform:
+        translateY(-50%);
+
+    z-index: 3;
+}
+
+
+/* =========================
+   ARROW
+========================= */
+
+#arrow {
+    position: absolute;
+
+    left: calc(5% + 43px);
+    top: 50%;
+
+    width: 185px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+
+    transform:
+        translateY(-50%);
+
+    z-index: 20;
+
+    cursor: grab;
+
+    touch-action: none;
+
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#arrow:active {
+    cursor: grabbing;
+}
+
+.arrow-body {
+    width: 150px;
+    height: 4px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6e5058,
+            #ba7c89
+        );
+
+    box-shadow:
+        0 0 7px
+        rgba(120,70,85,.2);
+}
+
+.arrow-head {
+    margin-left: -6px;
+
+    font-size: 30px;
+
+    color: #72505a;
+}
+
+
+/* =========================
+   INSTRUCTIONS
+========================= */
+
+.instruction {
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color: #aa6b7b;
+
+    animation:
+        instructionPulse 1.5s infinite;
+}
+
+.tap-hint {
+    margin-top: 10px;
+
+    font-size: 15px;
+
+    color: #b2828b;
+}
+
+
+/* =========================
+   HIT
+========================= */
+
+#targetHeart.hit {
+    animation:
+        heartHit .8s ease;
+}
+
+#arrow.hit {
+    animation:
+        arrowImpact .4s ease;
+}
+
+
+/* =========================
+   BIRTHDAY
+========================= */
+
+.birthday-glow {
+    font-size: 75px;
+
+    animation:
+        heartbeat 1.8s infinite;
+}
+
+.birthday-title {
+    font-family: "Great Vibes", cursive;
+
+    font-size:
+        clamp(58px, 12vw, 110px);
+
+    font-weight: 400;
+
+    line-height: .9;
+
+    color: #9c5d6f;
+}
+
+.birthday-title span {
+    display: block;
+    color: #d77f92;
+}
+
+
+/* =========================
+   TREE
+========================= */
+
+.tree-scene {
+    width: min(950px, 96vw);
+}
+
+.tree-message {
+    position: relative;
+    z-index: 30;
+}
+
+.tree {
+    position: relative;
+
+    width: 390px;
+    height: 330px;
+
+    margin: -10px auto 0;
+}
+
+.trunk {
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 16px;
+    height: 0;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6f443b,
+            #a76d5d,
+            #70463e
+        );
+
+    animation:
+        growTrunk 2.5s ease forwards;
+}
+
+.branch {
+    position: absolute;
+
+    left: 50%;
+
+    width: 120px;
+    height: 7px;
+
+    border-radius: 10px;
+
+    background: #795046;
+
+    opacity: 0;
+
+    transform-origin: left center;
+}
+
+.branch1 {
+    bottom: 110px;
+    transform: rotate(-40deg);
+    animation:
+        growBranch .8s 1.7s forwards;
+}
+
+.branch2 {
+    bottom: 140px;
+    transform: rotate(40deg);
+    animation:
+        growBranch .8s 1.9s forwards;
+}
+
+.branch3 {
+    bottom: 175px;
+    transform: rotate(-55deg);
+    animation:
+        growBranch .8s 2.1s forwards;
+}
+
+.branch4 {
+    bottom: 190px;
+    transform: rotate(55deg);
+    animation:
+        growBranch .8s 2.3s forwards;
+}
+
+
+/* =========================
+   TREE HEARTS
+========================= */
+
+.heart-flower {
+    position: absolute;
+
+    font-size: 24px;
+
+    opacity: 0;
+
+    transform: scale(0);
+
+    animation:
+        flowerPop .7s forwards;
+}
+
+
+/* heart shape positions */
+
+.f1  { left: 25px;  top: 125px; animation-delay: 2.5s; }
+.f2  { left: 50px;  top: 90px;  animation-delay: 2.6s; }
+.f3  { left: 78px;  top: 60px;  animation-delay: 2.7s; }
+.f4  { left: 110px; top: 45px;  animation-delay: 2.8s; }
+.f5  { left: 145px; top: 30px;  animation-delay: 2.9s; }
+.f6  { left: 180px; top: 45px;  animation-delay: 3s; }
+.f7  { left: 215px; top: 55px;  animation-delay: 3.1s; }
+.f8  { left: 250px; top: 75px;  animation-delay: 3.2s; }
+.f9  { left: 280px; top: 105px; animation-delay: 3.3s; }
+.f10 { left: 45px;  top: 140px; animation-delay: 3.4s; }
+.f11 { left: 85px;  top: 120px; animation-delay: 3.5s; }
+.f12 { left: 125px; top: 95px;  animation-delay: 3.6s; }
+.f13 { left: 160px; top: 80px;  animation-delay: 3.7s; }
+.f14 { left: 195px; top: 100px; animation-delay: 3.8s; }
+.f15 { left: 230px; top: 120px; animation-delay: 3.9s; }
+.f16 { left: 270px; top: 135px; animation-delay: 4s; }
+.f17 { left: 110px; top: 150px; animation-delay: 4.1s; }
+.f18 { left: 155px; top: 125px; animation-delay: 4.2s; }
+.f19 { left: 200px; top: 145px; animation-delay: 4.3s; }
+.f20 { left: 150px; top: 175px; animation-delay: 4.4s; }
+
+.tree-caption {
+    margin-top: -10px;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: 28px;
+
+    color: #ad6979;
+}
+
+
+/* =========================
+   PHOTOS
+========================= */
+
+.photo-wrapper {
+    width: 100%;
+}
+
+.photo-card {
+    width: min(300px, 72vw);
+    height: min(400px, 58vh);
+
+    margin: 15px auto;
+
+    padding: 8px;
+
+    background: white;
+
+    box-shadow:
+        0 20px 60px
+        rgba(100,50,65,.25);
+
+    opacity: 0;
+
+    transform:
+        scale(.85)
+        rotate(-6deg);
+
+    transition:
+        opacity .8s ease,
+        transform 1s ease;
+}
+
+.photo-two {
+    transform:
+        scale(.85)
+        rotate(5deg);
+}
+
+.photo-three {
+    transform:
+        scale(.85)
+        rotate(-3deg);
+}
+
+.photo-scene.active .photo-card {
+    opacity: 1;
+
+    transform:
+        scale(1)
+        rotate(0deg);
+}
+
+.photo-card img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.photo-caption {
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: 28px;
+
+    color: #ac6878;
+}
+
+
+/* =========================
+   QUOTE
+========================= */
+
+.quote-wrapper {
+    width: min(800px, 94vw);
+}
+
+.quote-heart {
+    font-size: 55px;
+
+    animation:
+        heartbeat 1.8s infinite;
+}
+
+.quote {
+    margin: 20px auto;
+
+    font-size:
+        clamp(18px, 3vw, 25px);
+
+    line-height: 1.5;
+
+    color: #76545d;
+}
+
+.quote p {
+    margin: 15px 0;
+}
+
+.quote-symbol {
+    margin-top: 20px;
+
+    font-size: 30px;
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.final-heart {
+    font-size: 80px;
+
+    animation:
+        heartbeat 1.6s infinite;
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            rgba(220,100,130,.4)
+        );
+}
+
+.final-title {
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size:
+        clamp(65px, 14vw, 120px);
+
+    font-weight: 400;
+
+    color: #a15f70;
+}
+
+.final-quote {
+    width: min(700px, 92vw);
+
+    margin: 20px auto;
+
+    font-size:
+        clamp(20px, 3vw, 27px);
+
+    line-height: 1.5;
+
+    color: #76545d;
+}
+
+.final-cake {
+    font-size: 34px;
+    margin: 15px;
+}
+
+.final-wish {
+    font-size: 20px;
+    color: #94717a;
+}
+
+.signature {
+    margin-top: 20px;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: 32px;
+
+    color: #b36b7c;
+}
+
+
+/* =========================
+   MUSIC
+========================= */
+
+#musicBtn {
+    position: fixed;
+
+    right: 18px;
+    top: 18px;
+
+    width: 44px;
+    height: 44px;
+
+    z-index: 2000;
+
+    border: 1px solid #dcb0bb;
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.85);
+
+    color: #a26373;
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes heartbeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    20% {
+        transform: scale(1.1);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1.12);
+    }
+
+    80% {
+        transform: scale(1);
+    }
+}
+
+@keyframes targetBeat {
+
+    0%,100% {
+        transform:
+            translateY(-50%)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translateY(-50%)
+            scale(1.12);
+    }
+}
+
+@keyframes instructionPulse {
+
+    0%,100% {
+        opacity: .45;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes heartHit {
+
+    0% {
+        transform:
+            translateY(-50%)
+            scale(1);
+    }
+
+    30% {
+        transform:
+            translateY(-50%)
+            scale(1.5);
+    }
+
+    60% {
+        transform:
+            translateY(-50%)
+            scale(.85);
+    }
+
+    100% {
+        transform:
+            translateY(-50%)
+            scale(1);
+    }
+}
+
+@keyframes arrowImpact {
+
+    0% {
+        transform:
+            translateY(-50%)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translateY(-50%)
+            scale(1.2);
+    }
+
+    100% {
+        transform:
+            translateY(-50%)
+            scale(.9);
+    }
+}
+
+@keyframes growTrunk {
+
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 210px;
+    }
+}
+
+@keyframes growBranch {
+
+    from {
+        opacity: 0;
+        transform:
+            rotate(0deg)
+            scaleX(0);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes flowerPop {
+
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    70% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes particleFall {
+
+    to {
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .tiny-text {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .soft-text {
+        font-size: 17px;
+    }
+
+    .arrow-area {
+        height: 230px;
+    }
+
+    #targetHeart {
+        right: 2%;
+        font-size: 62px;
+        width: 100px;
+        height: 100px;
+    }
+
+    .target-glow {
+        right: 2%;
+    }
+
+    .bow {
+        left: 2%;
+    }
+
+    #bowString {
+        left: calc(2% + 57px);
+    }
+
+    #arrow {
+        left: calc(2% + 42px);
+        width: 155px;
+    }
+
+    .arrow-body {
+        width: 120px;
+    }
+
+    .instruction {
+        letter-spacing: 3px;
+        font-size: 9px;
+    }
+
+    .tree {
+        transform: scale(.72);
+        margin-top: -30px;
+        margin-bottom: -35px;
+    }
+
+    .photo-card {
+        width: min(280px, 74vw);
+        height: 52vh;
+    }
+
+    .quote {
+        font-size: 17px;
+    }
+
+    .final-quote {
+        font-size: 19px;
+    }
+
+    .signature {
+        font-size: 28px;
+    }
+}
